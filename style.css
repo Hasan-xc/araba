@@ -1,0 +1,399 @@
+/* === Reset & Basic Styles === */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    line-height: 1.6;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* === Header & Navigation === */
+header {
+    background: linear-gradient(90deg, #007bff, #0056b3); /* تدرج أزرق */
+    color: #fff;
+    padding: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky; top: 0; z-index: 1000;
+}
+.header-content {
+    max-width: 1300px; margin: 0 auto; padding: 10px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.logo a { color: #fff; text-decoration: none; font-size: 1.6em; font-weight: bold; }
+.main-nav ul { list-style: none; display: flex; }
+.main-nav li { margin: 0 15px; }
+.main-nav a { color: #fff; text-decoration: none; padding: 10px 5px; font-weight: bold; transition: color 0.3s ease; }
+.main-nav a:hover { color: #e0e0e0; }
+.nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5em; cursor: pointer; }
+
+/* === Car Gallery (Index Page) === */
+.car-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+.car-card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.car-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); }
+.car-image { width: 100%; height: 220px; object-fit: cover; display: block; }
+.car-details { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.car-details h3 { margin-bottom: 10px; color: #0056b3; font-size: 1.3em; }
+.short-desc { font-size: 0.95em; color: #555; margin-bottom: 15px; flex-grow: 1; }
+.details-button {
+    display: inline-block;
+    background-color: #007bff; color: #fff;
+    padding: 10px 20px; border-radius: 25px;
+    text-decoration: none; text-align: center; font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: flex-start; margin-top: auto; /* تدفعه للأسفل */
+}
+.details-button:hover { background-color: #0056b3; transform: scale(1.03); }
+
+/* === Founder Info Section === */
+.founder-info {
+    background-color: #ffffff; padding: 60px 20px; margin-top: 50px;
+    text-align: center; border-top: 1px solid #e9ecef;
+}
+.founder-info .container { max-width: 800px; }
+.founder-image { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 25px; border: 5px solid #e9ecef; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.founder-info h2 { font-size: 2em; margin-bottom: 10px; }
+.founder-info h3 { color: #007bff; font-size: 1.5em; margin-bottom: 20px; }
+.founder-info p { font-size: 1.1em; line-height: 1.8; max-width: 700px; margin: 0 auto; color: #495057;}
+.founder-info p strong { color: #0056b3; }
+
+/* === Footer === */
+footer {
+    text-align: center; padding: 25px; margin-top: 40px;
+    background-color: #343a40; color: #f8f9fa; font-size: 0.9em;
+}
+
+/* === Car Detail Page Styles === */
+.car-detail-page { padding: 40px 0; }
+.car-detail-page h1 { text-align: center; margin-bottom: 30px; color: #0056b3; font-size: 2.5em; }
+.back-link { display: inline-block; margin-bottom: 20px; color: #007bff; text-decoration: none; font-weight: bold; }
+.back-link:hover { text-decoration: underline; }
+.back-link i { margin-right: 5px; }
+.detail-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.detail-image-gallery img {
+    width: 100%;
+    max-width: 550px; /* حد أقصى لعرض الصورة */
+    display: block;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+}
+.detail-specs h2 { margin-bottom: 15px; color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 5px; }
+.detail-description { margin-bottom: 25px; font-size: 1.05em; line-height: 1.7; color: #454545;}
+.detail-specs ul { list-style: none; padding: 0; }
+.detail-specs li { display: flex; align-items: center; margin-bottom: 12px; font-size: 1em; color: #333; border-bottom: 1px dashed #eee; padding-bottom: 10px;}
+.detail-specs li i { color: #007bff; font-size: 1.2em; margin-right: 12px; width: 25px; text-align: center; }
+.detail-specs li strong { color: #0056b3; margin-right: 5px; } /* تمييز اسم الميزة */
+
+
+/* === Responsive Design === */
+@media (max-width: 992px) {
+    .main-nav ul { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; background-color: #0069d9; width: 100%; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .main-nav.active ul { display: flex; } /* إظهار القائمة عند النقر */
+    .main-nav li { margin: 0; width: 100%; }
+    .main-nav a { padding: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+    .main-nav li:last-child a { border-bottom: none; }
+    .nav-toggle { display: block; } /* إظهار زر الهمبرغر */
+}
+
+@media (max-width: 768px) {
+    .car-gallery { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .founder-info h2 { font-size: 1.8em; }
+    .founder-info p { font-size: 1em; }
+    /* Detail page adjustments */
+    .detail-content { grid-template-columns: 1fr; } /* عمود واحد في الشاشات الصغيرة */
+    .detail-image-gallery img { max-width: 100%; } /* الصورة تأخذ عرض كامل */
+    .car-detail-page h1 { font-size: 2em; }
+}
+
+@media (max-width: 480px) {
+    .header-content { padding: 10px 15px; }
+    .logo a { font-size: 1.4em; }
+    .car-details h3 { font-size: 1.1em; }
+    .details-button { padding: 8px 15px; font-size: 0.9em; }
+    .founder-image { width: 100px; height: 100px; }
+    .car-detail-page h1 { font-size: 1.7em; }
+    .detail-specs li { font-size: 0.95em; }
+}
+
+/* === Customer Reviews Section === */
+.customer-reviews {
+    padding: 60px 0;
+    background-color: #eef2f7; /* خلفية رمادية فاتحة جداً للقسم */
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.customer-reviews h2 {
+    text-align: center;
+    font-size: 2.2em;
+    color: #0056b3; /* نفس لون عناوين الأقسام الأخرى */
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* خط تحت العنوان الرئيسي للقسم */
+.customer-reviews h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #007bff;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.review-card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    border: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.review-rating {
+    margin-bottom: 15px;
+    color: #ffc107; /* لون النجوم الأصفر */
+    font-size: 1.1em;
+}
+
+.review-text {
+    font-size: 1em;
+    color: #495057;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex-grow: 1; /* يدفع اسم المؤلف للأسفل */
+    font-style: italic;
+    position: relative;
+    padding: 0 10px; /* مسافة للعلامات */
+}
+
+/* إضافة علامات الاقتباس */
+.review-text::before {
+    content: '“';
+    position: absolute;
+    left: -5px;
+    top: -5px;
+    font-size: 2em;
+    color: #ced4da;
+    line-height: 1;
+}
+
+.review-text::after {
+    content: '”';
+    position: absolute;
+    right: -5px;
+    bottom: -15px;
+    font-size: 2em;
+    color: #ced4da;
+    line-height: 1;
+}
+
+
+.review-author {
+    font-size: 0.95em;
+    font-weight: bold;
+    color: #0056b3;
+    text-align: right;
+    margin-top: auto; /* تأكيد دفعه للأسفل */
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+}
+
+/* === تعديلات على الاستجابة للتقييمات === */
+@media (max-width: 768px) {
+    .customer-reviews h2 { font-size: 1.8em; }
+    .reviews-grid { grid-template-columns: 1fr; gap: 20px; } /* عمود واحد في الشاشات المتوسطة والصغيرة */
+}
+
+@media (max-width: 480px) {
+    .customer-reviews { padding: 40px 0; }
+     .customer-reviews h2 { font-size: 1.6em; margin-bottom: 30px;}
+    .review-card { padding: 20px; }
+    .review-text { font-size: 0.95em; }
+    .review-author { font-size: 0.9em; }
+}
+
+/* === قسم معلومات المؤسس (تعديل وتغيير الاسم إلى قسم التواصل) === */
+.contact-section { /* استخدام الكلاس الجديد */
+    background-color: #ffffff;
+    padding: 50px 20px; /* تقليل الحشو قليلاً */
+    margin-top: 50px;
+    text-align: center;
+    border-top: 1px solid #e9ecef;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.03);
+}
+
+.contact-section .container {
+     max-width: 700px; /* تقليل العرض الأقصى للتركيز */
+     margin: 0 auto;
+}
+
+.founder-image { /* نفس النمط السابق للصورة */
+    width: 120px; /* تصغير الصورة قليلاً */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid #e0e0e0;
+     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.contact-section h2 {
+    color: #343a40;
+    font-size: 1.8em; /* تصغير حجم العنوان */
+    margin-bottom: 15px;
+}
+
+.founder-bio { /* تنسيق النص المختصر */
+    color: #495057;
+    font-size: 1.05em; /* تصغير حجم الخط قليلاً */
+    line-height: 1.7;
+    margin-bottom: 30px; /* زيادة المسافة قبل تفاصيل الاتصال */
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.founder-bio strong {
+    color: #0056b3;
+}
+
+.contact-details {
+    margin-bottom: 30px;
+}
+
+.phone-number {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.phone-number i {
+    color: #007bff;
+    margin-right: 8px;
+}
+
+.phone-number a {
+    color: #0056b3; /* لون أغمق للرابط */
+    text-decoration: none;
+    font-weight: bold;
+}
+.phone-number a:hover {
+    text-decoration: underline;
+}
+
+.whatsapp-contact {
+    margin-top: 15px; /* مسافة من رقم الهاتف */
+}
+
+.whatsapp-button {
+    display: inline-flex; /* لمحاذاة الأيقونة والنص */
+    align-items: center;
+    background-color: #25D366; /* لون واتساب */
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.whatsapp-button:hover {
+    background-color: #1DAE54; /* لون أغمق عند المرور */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-button i {
+    font-size: 1.4em; /* حجم أيقونة واتساب */
+    margin-right: 10px;
+}
+
+
+/* === Social Media Icons === */
+.social-media {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee; /* خط فاصل */
+}
+
+.social-media p {
+    font-size: 1em;
+    color: #6c757d; /* لون رمادي للنص */
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.social-media a {
+    display: inline-block;
+    color: #fff;
+    background-color: #007bff; /* لون أزرق أساسي */
+    width: 40px;
+    height: 40px;
+    line-height: 40px; /* توسيط الأيقونة عمودياً */
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 8px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* تخصيص ألوان الأيقونات (اختياري) */
+.social-media a[aria-label="Facebook"] { background-color: #3b5998; }
+.social-media a[aria-label="Twitter"] { background-color: #1da1f2; }
+.social-media a[aria-label="Instagram"] { background: #d6249f linear-gradient(45deg, #fdf497, #fdf497, #fd5949, #d6249f, #285AEB); }
+
+
+.social-media a:hover {
+    opacity: 0.9;
+    transform: scale(1.1);
+}
+
+
+/* تعديلات الاستجابة للقسم الجديد */
+@media (max-width: 480px) {
+    .contact-section { padding: 40px 15px; }
+    .founder-image { width: 100px; height: 100px; }
+    .contact-section h2 { font-size: 1.6em; }
+    .founder-bio { font-size: 1em; }
+    .phone-number { font-size: 1em; }
+    .whatsapp-button { font-size: 1em; padding: 10px 20px; }
+    .whatsapp-button i { font-size: 1.2em; }
+    .social-media a { width: 35px; height: 35px; line-height: 35px; font-size: 1em; margin: 0 5px;}
+}
